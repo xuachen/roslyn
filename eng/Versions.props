@@ -241,7 +241,7 @@
       create a test insertion in Visual Studio to validate.
     -->
     <NewtonsoftJsonVersion>12.0.2</NewtonsoftJsonVersion>
-    <StreamJsonRpcVersion>2.2.34</StreamJsonRpcVersion>
+    <StreamJsonRpcVersion>2.3.80-rc</StreamJsonRpcVersion>
     <SystemCollectionsImmutableVersion>1.5.0</SystemCollectionsImmutableVersion>
     <SystemReflectionMetadataVersion>1.6.0</SystemReflectionMetadataVersion>
     <MicrosoftVisualStudioStaticReviewsEmbeddableVersion>0.1.102-alpha</MicrosoftVisualStudioStaticReviewsEmbeddableVersion>
