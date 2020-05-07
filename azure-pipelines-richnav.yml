@@ -1,0 +1,34 @@
+# Branches that trigger a build on commit
+trigger:
+- master
+- master-vs-deps
+- release/*
+- features/*
+- demos/*
+
+# Branches that trigger builds on PR
+pr:
+- master
+- master-vs-deps
+- release/*
+- features/*
+- demos/*
+
+jobs:
+- job: Windows_Desktop_Unit_Tests
+  pool:
+    name: NetCorePublic-Pool
+    queue: BuildPool.Windows.10.Amd64.VS2017.Open
+  timeoutInMinutes: 90
+
+  steps:
+    - powershell: ./eng/build.sh --ci --restore
+      displayName: Restore
+
+    - task: RichCodeNavIndexer@0
+      displayName: RichCodeNav Upload
+      inputs:
+        languages: 'csharp'
+        environment: production
+        isPrivateFeed: false
+      continueOnError: true
