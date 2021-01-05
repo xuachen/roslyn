@@ -6,7 +6,7 @@ pr: none
 jobs:
 - job: RichCodeNav_Indexing
   pool:
-    name: DotNetCore-Build
+    name: Hosted Windows 2019 with VS2019
   variables:
     EnableRichCodeNavigation: true
   timeoutInMinutes: 200
@@ -17,6 +17,18 @@ jobs:
       inputs:
         filePath: eng/build.ps1
         arguments: -ci -restore -build -binaryLog -configuration Debug -prepareMachine
+
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: $(Build.SourcesDirectory)/artifacts/bin
+        TargetFolder: $(Build.ArtifactStagingDirectory)
+      displayName: Copy Bin to Build Artifacts
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: $(Build.ArtifactStagingDirectory)
+        ArtifactName: Artifacts
+      displayName: "Publish Build Artifacts"
 
     - task: RichCodeNavIndexer@0
       displayName: RichCodeNav Upload
