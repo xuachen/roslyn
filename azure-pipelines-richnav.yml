@@ -6,8 +6,7 @@ pr: none
 jobs:
 - job: RichCodeNav_Indexing
   pool:
-    name: NetCorePublic-Pool
-    queue: BuildPool.Windows.10.Amd64.Open
+    name: DotNetCore-Build
   variables:
     EnableRichCodeNavigation: true
   timeoutInMinutes: 200
