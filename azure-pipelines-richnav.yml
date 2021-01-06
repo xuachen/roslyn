@@ -20,9 +20,9 @@ jobs:
 
     - task: CopyFiles@2
       inputs:
-        SourceFolder: $(Build.SourcesDirectory)/artifacts/bin
+        Contents: $(Build.SourcesDirectory)/artifacts/bin/**/*.RichCodeNav.log
         TargetFolder: $(Build.ArtifactStagingDirectory)
-      displayName: Copy Bin to Build Artifacts
+      displayName: Copy RichNav log to Build Artifacts
 
     - task: PublishBuildArtifacts@1
       inputs:
